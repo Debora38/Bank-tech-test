@@ -28,11 +28,11 @@ class BankAccount
     @transactions.each do |action|
       account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
-    return account_statement
+    account_statement
   end
 
   def today
-    Date.today.day.to_s + "/" + Date.today.month.to_s + "/" + Date.today.year.to_s
+    "#{Date.today.day}/#{Date.today.month}/#{Date.today.year}"
   end
 
   def twodecimal(amount)
