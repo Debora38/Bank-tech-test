@@ -40,10 +40,10 @@ class BankAccount
   end
 
   def enter_withdrawal(amount)
-    @transactions << { date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance)}
+    @transactions << { date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance) }
   end
 
   def enter_deposit(amount)
-    @transactions << { date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance)}
+    @transactions << { date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance) }
   end
 end
