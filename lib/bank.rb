@@ -6,12 +6,12 @@ class BankAccount
 
   def initialize(balance = 0)
     @balance = balance
-    @actions = []
+    @transactions = []
   end
 
   def deposit(amount)
     @balance += amount
-    @actions << { date: today, credit: twodecimal(amount), debit: "", balance: twodecimal(@balance)}
+    @transactions << { date: today, credit: twodecimal(amount), debit: "", balance: twodecimal(@balance)}
   end
 
   def withdraw(amount)
@@ -20,12 +20,12 @@ class BankAccount
     else
       @balance -= amount
     end
-    @actions << { date: today, credit: "", debit: twodecimal(amount), balance: twodecimal(@balance)}
+    @transactions << { date: today, credit: "", debit: twodecimal(amount), balance: twodecimal(@balance)}
   end
 
   def statement
     account_statement = "date || credit || debit || balance\n"
-    @actions.each do |action|
+    @transactions.each do |action|
       account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
     return account_statement
