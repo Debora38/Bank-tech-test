@@ -14,4 +14,12 @@ RSpec.describe BankAccount do
       expect(subject.balance).to eq 2000
     end
   end
+
+  context "#withdrawal" do
+    it 'should allow me to withdraw money from my account' do
+      subject.deposit(2000)
+      subject.withdraw(500)
+      expect(subject.balance).to eq 1500
+    end
+  end
 end
