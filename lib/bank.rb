@@ -32,10 +32,14 @@ class BankAccount
   end
 
   def today
-    "#{Date.today.day}/#{Date.today.month}/#{Date.today.year}"
+    "#{twochar(Date.today.day)}/#{twochar(Date.today.month)}/#{Date.today.year}"
   end
 
   def twodecimal(amount)
     format('%.2f', amount)
+  end
+
+  def twochar(date)
+    format('%02i', date)
   end
 end
