@@ -36,6 +36,6 @@ class BankAccount
   end
 
   def twodecimal(amount)
-    sprintf('%.2f', amount)
+    format('%.2f', amount)
   end
 end
