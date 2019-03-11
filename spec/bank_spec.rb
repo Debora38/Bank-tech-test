@@ -36,5 +36,15 @@ RSpec.describe BankAccount do
       expect(subject.print_statement).to include('04/02/2019 || 2000.00 ||  || 2000.00')
       expect(subject.print_statement).to include('04/02/2019 ||  || 500.00 || 1500.00')
     end
+
+    it 'should store the history of my account in descendent order' do
+      allow(Date).to receive_message_chain(:today, :strftime).and_return '04/02/2019'
+      subject.deposit(2000)
+      subject.withdraw(500)
+      subject.deposit(300)
+      expect(subject.transactions[0][:credit]).to eq("300.00")
+      expect(subject.transactions[1][:debit]).to eq("500.00")
+      expect(subject.transactions[2][:credit]).to eq("2000.00")
+    end
   end
 end

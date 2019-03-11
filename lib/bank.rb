@@ -1,7 +1,7 @@
 require 'date'
 
 class BankAccount
-  attr_reader :balance, :actions
+  attr_reader :balance, :transactions
 
   def initialize(balance = 0)
     @balance = balance
@@ -38,10 +38,10 @@ class BankAccount
   end
 
   def save_withdrawal(amount)
-    @transactions << { date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance) }
+    @transactions.unshift({ date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance) })
   end
 
   def save_deposit(amount)
-    @transactions << { date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance) }
+    @transactions.unshift({ date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance) })
   end
 end
