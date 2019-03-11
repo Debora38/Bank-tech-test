@@ -30,7 +30,7 @@ class BankAccount
   private
 
   def today
-    Date.today.strftime('%d-%m-%Y')
+    Date.today.strftime('%d/%m/%Y')
   end
 
   def twodecimal(amount)
