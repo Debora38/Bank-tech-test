@@ -11,13 +11,13 @@ class BankAccount
 
   def deposit(amount)
     @balance += amount
-    enter_deposit(amount)
+    save_deposit(amount)
   end
 
   def withdraw(amount)
     raise 'Insufficient funds' if @balance - amount < 0
     @balance -= amount
-    enter_withdrawal(amount)
+    save_withdrawal(amount)
   end
 
   def statement
@@ -39,11 +39,11 @@ class BankAccount
     format('%02i', date)
   end
 
-  def enter_withdrawal(amount)
+  def save_withdrawal(amount)
     @transactions << { date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance) }
   end
 
-  def enter_deposit(amount)
+  def save_deposit(amount)
     @transactions << { date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance) }
   end
 end
