@@ -1,7 +1,6 @@
 require 'bank'
 
 RSpec.describe BankAccount do
-
   context '#deposit' do
     it 'should allow me to deposit money in my account' do
       subject.deposit(2000)

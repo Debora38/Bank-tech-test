@@ -1,7 +1,6 @@
 require 'date'
 
 class BankAccount
-
   attr_reader :balance, :actions
 
   def initialize(balance = 0)
@@ -16,11 +15,8 @@ class BankAccount
   end
 
   def withdraw(amount)
-    if @balance - amount < 0
-      raise 'Insufficient funds'
-    else
-      @balance -= amount
-    end
+    raise 'Insufficient funds' if @balance - amount < 0
+    @balance -= amount
     enter_withdrawal(amount)
   end
 
