@@ -6,7 +6,6 @@ class BankAccount
   def initialize(balance = 0)
     @balance = balance
     @transactions = []
-    @account_statement = "date || credit || debit || balance\n"
   end
 
   def deposit(amount)
@@ -21,10 +20,11 @@ class BankAccount
   end
 
   def print_statement
+    account_statement = "date || credit || debit || balance\n"
     @transactions.each do |action|
-      @account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
+      account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
-    @account_statement
+    account_statement
   end
 
   private
