@@ -11,7 +11,7 @@ class BankAccount
 
   def deposit(amount)
     @balance += amount
-    @actions << { date: today, credit: amount, debit: "", balance: @balance}
+    @actions << { date: today, credit: twodecimal(amount), debit: "", balance: twodecimal(@balance)}
   end
 
   def withdraw(amount)
@@ -20,7 +20,7 @@ class BankAccount
     else
       @balance -= amount
     end
-    @actions << { date: today, credit: "", debit: amount, balance: @balance}
+    @actions << { date: today, credit: "", debit: twodecimal(amount), balance: twodecimal(@balance)}
   end
 
   def statement
@@ -33,5 +33,9 @@ class BankAccount
 
   def today
     Date.today.day.to_s + "/" + Date.today.month.to_s + "/" + Date.today.year.to_s
+  end
+
+  def twodecimal(amount)
+    sprintf('%.2f', amount)
   end
 end

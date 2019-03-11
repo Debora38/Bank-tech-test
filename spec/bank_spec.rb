@@ -32,7 +32,7 @@ RSpec.describe BankAccount do
       allow(subject).to receive(:today).and_return('14/2/2019')
       subject.deposit(2000)
       expect(subject.statement).to include('date || credit || debit || balance')
-      expect(subject.statement).to include('14/2/2019 || 2000 ||  || 2000')
+      expect(subject.statement).to include('14/2/2019 || 2000.00 ||  || 2000.00')
     end
 
     it "should print out the history of my account: multiple actions" do
@@ -40,8 +40,8 @@ RSpec.describe BankAccount do
       subject.deposit(2000)
       subject.withdraw(500)
       expect(subject.statement).to include('date || credit || debit || balance')
-      expect(subject.statement).to include('14/2/2019 || 2000 ||  || 2000')
-      expect(subject.statement).to include('14/2/2019 ||  || 500 || 1500')
+      expect(subject.statement).to include('14/2/2019 || 2000.00 ||  || 2000.00')
+      expect(subject.statement).to include('14/2/2019 ||  || 500.00 || 1500.00')
     end
   end
 end
