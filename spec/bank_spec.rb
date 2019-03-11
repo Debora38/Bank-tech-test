@@ -22,23 +22,19 @@ RSpec.describe BankAccount do
 
   context '#statement' do
     it 'should print out the history of my account: one deposit' do
-      allow(Date).to receive_message_chain(:today, :day).and_return 4
-      allow(Date).to receive_message_chain(:today, :month).and_return 2
-      allow(Date).to receive_message_chain(:today, :year).and_return 2019
+      allow(Date).to receive_message_chain(:today, :strftime).and_return '04-02-2019'
       subject.deposit(2000)
-      expect(subject.statement).to include('date || credit || debit || balance')
-      expect(subject.statement).to include('04/02/2019 || 2000.00 ||  || 2000.00')
+      expect(subject.print_statement).to include('date || credit || debit || balance')
+      expect(subject.print_statement).to include('04-02-2019 || 2000.00 ||  || 2000.00')
     end
 
     it 'should print out the history of my account: multiple actions' do
-      allow(Date).to receive_message_chain(:today, :day).and_return 4
-      allow(Date).to receive_message_chain(:today, :month).and_return 2
-      allow(Date).to receive_message_chain(:today, :year).and_return 2019
+      allow(Date).to receive_message_chain(:today, :strftime).and_return '04-02-2019'
       subject.deposit(2000)
       subject.withdraw(500)
-      expect(subject.statement).to include('date || credit || debit || balance')
-      expect(subject.statement).to include('04/02/2019 || 2000.00 ||  || 2000.00')
-      expect(subject.statement).to include('04/02/2019 ||  || 500.00 || 1500.00')
+      expect(subject.print_statement).to include('date || credit || debit || balance')
+      expect(subject.print_statement).to include('04-02-2019 || 2000.00 ||  || 2000.00')
+      expect(subject.print_statement).to include('04-02-2019 ||  || 500.00 || 1500.00')
     end
   end
 end

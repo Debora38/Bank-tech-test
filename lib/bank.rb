@@ -20,23 +20,21 @@ class BankAccount
     save_withdrawal(amount)
   end
 
-  def statement
+  def print_statement
     @transactions.each do |action|
       @account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
     @account_statement
   end
 
+  private
+
   def today
-    "#{twochar(Date.today.day)}/#{twochar(Date.today.month)}/#{Date.today.year}"
+    Date.today.strftime('%d-%m-%Y')
   end
 
   def twodecimal(amount)
     format('%.2f', amount)
-  end
-
-  def twochar(date)
-    format('%02i', date)
   end
 
   def save_withdrawal(amount)
