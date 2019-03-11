@@ -1,0 +1,15 @@
+Documentation:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - spec/spec_helper.rb
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/*.rb'
