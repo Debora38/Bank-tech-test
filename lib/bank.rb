@@ -24,9 +24,9 @@ class BankAccount
   end
 
   def statement
-    account_statement = "date | credit | debit | balance\n"
+    account_statement = "date || credit || debit || balance\n"
     @actions.each do |action|
-      account_statement += "#{action[:date]} | #{action[:credit]} | #{action[:debit]} | #{action[:balance]}\n"
+      account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
     return account_statement
   end
