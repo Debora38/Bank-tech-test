@@ -26,4 +26,22 @@ RSpec.describe BankAccount do
       expect { subject.withdraw(1) }.to raise_error('Insufficient funds')
     end
   end
+
+  context "#statement" do
+    it "should print out the history of my account: one deposit" do
+      allow(subject).to receive(:today).and_return('14/2/2019')
+      subject.deposit(2000)
+      expect(subject.statement).to include('date | credit | debit | balance')
+      expect(subject.statement).to include('14/2/2019 | 2000 |  | 2000')
+    end
+
+    it "should print out the history of my account: multiple actions" do
+      allow(subject).to receive(:today).and_return('14/2/2019')
+      subject.deposit(2000)
+      subject.withdraw(500)
+      expect(subject.statement).to include('date | credit | debit | balance')
+      expect(subject.statement).to include('14/2/2019 | 2000 |  | 2000')
+      expect(subject.statement).to include('14/2/2019 |  | 500 | 1500')
+    end
+  end
 end
