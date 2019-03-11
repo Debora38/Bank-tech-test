@@ -38,10 +38,10 @@ class BankAccount
   end
 
   def save_withdrawal(amount)
-    @transactions.unshift({ date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance) })
+    @transactions.unshift(date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance))
   end
 
   def save_deposit(amount)
-    @transactions.unshift({ date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance) })
+    @transactions.unshift(date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance))
   end
 end
