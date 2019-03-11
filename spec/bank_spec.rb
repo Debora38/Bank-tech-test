@@ -3,7 +3,7 @@ require 'bank'
 RSpec.describe BankAccount do
 
   context '#deposit' do
-    it "should allow me to deposit money in my account" do
+    it 'should allow me to deposit money in my account' do
       subject.deposit(2000)
       expect(subject.balance).to eq 2000
     end
@@ -22,7 +22,7 @@ RSpec.describe BankAccount do
   end
 
   context '#statement' do
-    it "should print out the history of my account: one deposit" do
+    it 'should print out the history of my account: one deposit' do
       allow(Date).to receive_message_chain(:today, :day).and_return 4
       allow(Date).to receive_message_chain(:today, :month).and_return 2
       allow(Date).to receive_message_chain(:today, :year).and_return 2019
@@ -31,7 +31,7 @@ RSpec.describe BankAccount do
       expect(subject.statement).to include('04/02/2019 || 2000.00 ||  || 2000.00')
     end
 
-    it "should print out the history of my account: multiple actions" do
+    it 'should print out the history of my account: multiple actions' do
       allow(Date).to receive_message_chain(:today, :day).and_return 4
       allow(Date).to receive_message_chain(:today, :month).and_return 2
       allow(Date).to receive_message_chain(:today, :year).and_return 2019
