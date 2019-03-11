@@ -11,7 +11,7 @@ class BankAccount
 
   def deposit(amount)
     @balance += amount
-    @actions << {date: today, credit: amount, debit: "", balance: @balance}
+    @actions << { date: today, credit: amount, debit: "", balance: @balance}
   end
 
   def withdraw(amount)
@@ -20,7 +20,7 @@ class BankAccount
     else
       @balance -= amount
     end
-    @actions << {date: today, credit: "", debit: amount, balance: @balance}
+    @actions << { date: today, credit: "", debit: amount, balance: @balance}
   end
 
   def statement
@@ -32,6 +32,6 @@ class BankAccount
   end
 
   def today
-    DateTime.now.day.to_s + "/" + DateTime.now.month.to_s + "/" + DateTime.now.year.to_s
+    Date.today.day.to_s + "/" + Date.today.month.to_s + "/" + Date.today.year.to_s
   end
 end
