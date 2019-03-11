@@ -42,9 +42,9 @@ RSpec.describe BankAccount do
       subject.deposit(2000)
       subject.withdraw(500)
       subject.deposit(300)
-      expect(subject.transactions[0][:credit]).to eq("300.00")
-      expect(subject.transactions[1][:debit]).to eq("500.00")
-      expect(subject.transactions[2][:credit]).to eq("2000.00")
+      expect(subject.transactions[0][:credit]).to eq('300.00')
+      expect(subject.transactions[1][:debit]).to eq('500.00')
+      expect(subject.transactions[2][:credit]).to eq('2000.00')
     end
   end
 end
