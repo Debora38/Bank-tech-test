@@ -7,4 +7,11 @@ RSpec.describe BankAccount do
       expect(subject.balance).to eq 0
     end
   end
+
+  context "#deposit" do
+    it "should allow me to deposit money in my account" do
+      subject.deposit(2000)
+      expect(subject.balance).to eq 2000
+    end
+  end
 end
