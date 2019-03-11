@@ -7,11 +7,12 @@ class BankAccount
   def initialize(balance = 0)
     @balance = balance
     @transactions = []
+    @account_statement = "date || credit || debit || balance\n"
   end
 
   def deposit(amount)
     @balance += amount
-    @transactions << { date: today, credit: twodecimal(amount), debit: "", balance: twodecimal(@balance)}
+    enter_deposit(amount)
   end
 
   def withdraw(amount)
@@ -20,15 +21,14 @@ class BankAccount
     else
       @balance -= amount
     end
-    @transactions << { date: today, credit: "", debit: twodecimal(amount), balance: twodecimal(@balance)}
+    enter_withdrawal(amount)
   end
 
   def statement
-    account_statement = "date || credit || debit || balance\n"
     @transactions.each do |action|
-      account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
+      @account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
     end
-    account_statement
+    @account_statement
   end
 
   def today
@@ -41,5 +41,13 @@ class BankAccount
 
   def twochar(date)
     format('%02i', date)
+  end
+
+  def enter_withdrawal(amount)
+    @transactions << { date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(@balance)}
+  end
+
+  def enter_deposit(amount)
+    @transactions << { date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(@balance)}
   end
 end
