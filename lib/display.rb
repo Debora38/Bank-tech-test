@@ -13,4 +13,8 @@ attr_reader :transactions
     account_statement
   end
 
+  def twodecimal(amount)
+    format('%.2f', amount)
+  end
+
 end
