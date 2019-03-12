@@ -1,4 +1,5 @@
 require 'date'
+require_relative 'display'
 
 class BankAccount
   attr_reader :balance, :transactions
@@ -6,11 +7,12 @@ class BankAccount
   def initialize(balance = 0)
     @balance = balance
     @transactions = []
+    @display = Display.new
   end
 
   def deposit(amount)
     @balance += amount
-    save_deposit(amount)
+    @display.save_deposit(amount, @balance)
   end
 
   def withdraw(amount)

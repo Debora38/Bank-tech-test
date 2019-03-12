@@ -13,6 +13,10 @@ attr_reader :transactions
     account_statement
   end
 
+  def save_deposit(amount, balance)
+    @transactions.unshift(date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(balance))
+  end
+
   def twodecimal(amount)
     format('%.2f', amount)
   end
