@@ -1,12 +1,13 @@
 require_relative 'display'
+require_relative 'account_history'
 
 class BankAccount
   attr_reader :balance, :transactions, :display
 
   def initialize(balance = 0)
     @balance = balance
-    @display = Display.new
     @account_history = AccountHistory.new
+    @display = Display.new(@account_history)
   end
 
   def deposit(amount)

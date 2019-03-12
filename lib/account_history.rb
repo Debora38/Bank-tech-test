@@ -1,3 +1,5 @@
+require 'date'
+
 class AccountHistory
   attr_reader :all_transactions
 
