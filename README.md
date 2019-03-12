@@ -38,7 +38,7 @@ After realising that the `print statement()` functionality involves the interfac
 ##### 3rd approach
 After taking a self-assesment quiz, I realised that I could extrapolate more from the 2 current classes and avoid the array of hashes, initialilzing transactions objects and storing them in the array. This array of transactions can also be extrapolated and saved into an Account_History class.
 
-<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank%20refactored%204%20classes.png?raw=true">
+<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank%20refactored%204%20classes(3).png?raw=true">
 
 ## Instructions for installation
 
