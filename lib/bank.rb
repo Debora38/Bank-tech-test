@@ -5,7 +5,6 @@ class BankAccount
 
   def initialize(balance = 0)
     @balance = balance
-    @transactions = []
     @display = Display.new
   end
 
