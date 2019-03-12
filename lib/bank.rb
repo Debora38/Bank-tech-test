@@ -18,7 +18,7 @@ class BankAccount
   def withdraw(amount)
     raise 'Insufficient funds' if @balance - amount < 0
     @balance -= amount
-    save_withdrawal(amount)
+    @display.save_withdrawal(amount, @balance)
   end
 
   def print_statement

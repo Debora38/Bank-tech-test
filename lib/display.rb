@@ -17,6 +17,10 @@ attr_reader :transactions
     @transactions.unshift(date: today, credit: twodecimal(amount), debit: '', balance: twodecimal(balance))
   end
 
+  def save_withdrawal(amount, balance)
+    @transactions.unshift(date: today, credit: '', debit: twodecimal(amount), balance: twodecimal(balance))
+  end
+
   def twodecimal(amount)
     format('%.2f', amount)
   end
