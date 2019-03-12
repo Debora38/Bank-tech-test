@@ -1,8 +1,7 @@
 require 'display'
 
 RSpec.describe Display do
-
-  context "#print_statement" do
+  context '#print_statement' do
     it 'should print out the history of my account: no deposits' do
       account_history = double('account_history')
       display = Display.new(account_history)
