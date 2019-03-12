@@ -23,11 +23,15 @@ date || credit || debit || balance<br>
 
 ## My approach
 
-After reading the above instructions, I decided that the actual functionalities requested are 3: `deposit()`, `withdraw()`, `print_statement()`, therefore only one class `BankAccount` has been created.
+After reading the above instructions, I decided that the actual functionalities requested are 3: `deposit()`, `withdraw()`, `print_statement()`, therefore only one class `BankAccount` has been created at first.
 
-The 3 methods interract as below:
+The 3 methods interracted as below:
 
 <img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank_model.png?raw=true">
+
+After realising that the `print statement()` functionality involves the interface and does not fit with `deposit()` and `withdraw()`, I moved it to a `class Display` and refactored the program as below:
+
+<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/bank%20model%20refactored.png?raw=true">
 
 ## Instructions for installation
 
@@ -55,11 +59,11 @@ Traceback (most recent call last):<br>
 **RuntimeError (Insufficient funds)**<br>
 - withdraw sufficient funds `account.withdraw(500)`<br>
 => [{:date=>"11/03/2019", :credit=>"", :debit=>"500.00", :balance=>"1500.00"}, {:date=>"11/03/2019", :credit=>"2000.00", :debit=>"", :balance=>"2000.00"}] 
-- print a statement `account.print_statement`<br>
+- print a statement `account.display.print_statement`<br>
  => "date || credit || debit || balance\n11/03/2019 ||  || 500.00 || 1500.00\n11/03/2019 || 2000.00 ||  || 2000.00\n" 
 - make another transaction to see the statement change `account.withdraw(200)`<br>
  => [{:date=>"11/03/2019", :credit=>"", :debit=>"200.00", :balance=>"1300.00"}, {:date=>"11/03/2019", :credit=>"", :debit=>"500.00", :balance=>"1500.00"}, {:date=>"11/03/2019", :credit=>"2000.00", :debit=>"", :balance=>"2000.00"}] 
-- print the statement and notice the change `account.print_statement`<br>
+- print the statement and notice the change `account.display.print_statement`<br>
  => "date || credit || debit || balance\n11/03/2019 ||  || 200.00 || 1300.00\n11/03/2019 ||  || 500.00 || 1500.00\n11/03/2019 || 2000.00 ||  || 2000.00\n"
 <br>
-<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank.png?raw=true">
+<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank_program.png?raw=true">
