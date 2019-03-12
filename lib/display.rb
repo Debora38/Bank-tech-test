@@ -1,3 +1,5 @@
+require 'date'
+
 class Display
 attr_reader :transactions
 

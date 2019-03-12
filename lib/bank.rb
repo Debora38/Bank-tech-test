@@ -1,4 +1,3 @@
-require 'date'
 require_relative 'display'
 
 class BankAccount
