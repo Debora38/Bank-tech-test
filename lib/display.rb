@@ -17,4 +17,8 @@ attr_reader :transactions
     format('%.2f', amount)
   end
 
+  def today
+    Date.today.strftime('%d/%m/%Y')
+  end
+
 end
