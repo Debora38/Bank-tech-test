@@ -1,4 +1,4 @@
-require 'bank'
+require 'bankaccount'
 
 RSpec.describe BankAccount do
   context '#deposit' do
