@@ -23,15 +23,22 @@ date || credit || debit || balance<br>
 
 ## My approach
 
+##### 1st approach
 After reading the above instructions, I decided that the actual functionalities requested are 3: `deposit()`, `withdraw()`, `print_statement()`, therefore only one class `BankAccount` has been created at first.
 
 The 3 methods interracted as below:
 
 <img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank_model.png?raw=true">
 
+##### 2nd approach
 After realising that the `print statement()` functionality involves the interface and does not fit with `deposit()` and `withdraw()`, I moved it to a `class Display` and refactored the program as below:
 
 <img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/bank%20model%20refactored.png?raw=true">
+
+##### 3rd approach
+After taking a self-assesment quiz, I realised that I could extrapolate more from the 2 current classes and avoid the array of hashes, initialilzing transactions objects and storing them in the array. This array of transactions can also be extrapolated and saved into an Account_History class.
+
+<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank%20refactored%204%20classes.png?raw=true">
 
 ## Instructions for installation
 
@@ -45,12 +52,12 @@ After realising that the `print statement()` functionality involves the interfac
 ## How does it work
 
 - open **irb** from inside the project folder
-- require the file `require './lib/bank'`<br>
+- require the file `require './lib/bankaccount'`<br>
 => true
 - create a bank account `account = BankAccount.new`<br>
-=> #<BankAccount:0x00007fd2b8117820 @balance=0, @transactions=[]> 
+=> => #<BankAccount:0x00007fb2ae866b50 @balance=0, @account_history=#<AccountHistory:0x00007fb2ae866b28 @all_transactions=[], @transaction=Transactions>, @display=#<Display:0x00007fb2ae866ad8 @account_history=#<AccountHistory:0x00007fb2ae866b28 @all_transactions=[], @transaction=Transactions>>>
 - make a deposit `account.deposit(2000)`<br>
-=> [{:date=>"11/03/2019", :credit=>"2000.00", :debit=>"", :balance=>"2000.00"}] 
+=> [#<Transactions:0x00007fb2ae856228 @date="12/03/2019", @credit=2000, @debit=0, @balance=2000>] 
 - try to withdraw more than the available funds `account.withdraw(9000)`<br>
 Traceback (most recent call last):<br>
         &nbsp; 3: from /Users/student/.rvm/rubies/ruby-2.5.0/bin/irb:11:in '<main>'<br>
@@ -58,12 +65,19 @@ Traceback (most recent call last):<br>
         &nbsp;  1: from /Users/student/Desktop/Projects_debora/bank_tech_test/lib/bank.rb:17:in 'withdraw'<br>
 **RuntimeError (Insufficient funds)**<br>
 - withdraw sufficient funds `account.withdraw(500)`<br>
-=> [{:date=>"11/03/2019", :credit=>"", :debit=>"500.00", :balance=>"1500.00"}, {:date=>"11/03/2019", :credit=>"2000.00", :debit=>"", :balance=>"2000.00"}] 
+ => [#<Transactions:0x00007fb2ae84abd0 @date="12/03/2019", @credit=0, @debit=500, @balance=1500>, #<Transactions:0x00007fb2ae856228 @date="12/03/2019", @credit=2000, @debit=0, @balance=2000>] 
 - print a statement `account.display.print_statement`<br>
- => "date || credit || debit || balance\n11/03/2019 ||  || 500.00 || 1500.00\n11/03/2019 || 2000.00 ||  || 2000.00\n" 
+ date || credit || debit || balance<br>
+12/03/2019 ||  || 500.00 || 1500.00<br>
+12/03/2019 || 2000.00 ||  || 2000.00<br>
+ => nil<br>
 - make another transaction to see the statement change `account.withdraw(200)`<br>
- => [{:date=>"11/03/2019", :credit=>"", :debit=>"200.00", :balance=>"1300.00"}, {:date=>"11/03/2019", :credit=>"", :debit=>"500.00", :balance=>"1500.00"}, {:date=>"11/03/2019", :credit=>"2000.00", :debit=>"", :balance=>"2000.00"}] 
+ => [#<Transactions:0x00007fb2ad886208 @date="12/03/2019", @credit=0, @debit=200, @balance=1300>, #<Transactions:0x00007fb2ae84abd0 @date="12/03/2019", @credit=0, @debit=500, @balance=1500>, #<Transactions:0x00007fb2ae856228 @date="12/03/2019", @credit=2000, @debit=0, @balance=2000>] 
 - print the statement and notice the change `account.display.print_statement`<br>
- => "date || credit || debit || balance\n11/03/2019 ||  || 200.00 || 1300.00\n11/03/2019 ||  || 500.00 || 1500.00\n11/03/2019 || 2000.00 ||  || 2000.00\n"
+date || credit || debit || balance<br>
+12/03/2019 ||  || 200.00 || 1300.00<br>
+12/03/2019 ||  || 500.00 || 1500.00<br>
+12/03/2019 || 2000.00 ||  || 2000.00<br>
+ => nil<br>
 <br>
-<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank_program.png?raw=true">
+<img src="https://github.com/Debora38/Bank-tech-test/blob/master/docs/Bank%20program%203.png?raw=true">
