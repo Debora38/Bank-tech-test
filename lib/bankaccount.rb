@@ -6,11 +6,12 @@ class BankAccount
   def initialize(balance = 0)
     @balance = balance
     @display = Display.new
+    @account_history = AccountHistory.new
   end
 
   def deposit(amount)
     @balance += amount
-    @display.save_deposit(amount, @balance)
+    @account_history.save_deposit(amount, @balance)
   end
 
   def withdraw(amount)
