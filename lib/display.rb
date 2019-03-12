@@ -8,11 +8,11 @@ attr_reader :transactions
   end
 
   def print_statement
-    account_statement = "date || credit || debit || balance\n"
+    account_statement = ["date || credit || debit || balance"]
     @transactions.each do |action|
-      account_statement += "#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}\n"
+      account_statement.push("#{action[:date]} || #{action[:credit]} || #{action[:debit]} || #{action[:balance]}")
     end
-    account_statement
+    puts account_statement
   end
 
   def save_deposit(amount, balance)
