@@ -8,9 +8,13 @@ attr_reader :account_history
   def print_statement
     account_statement = ["date || credit || debit || balance"]
     @account_history.all_transactions.each do |action|
-      account_statement.push("#{action.date} || #{twodecimal(action.credit)} || #{twodecimal(action.debit)} || #{twodecimal(action.balance)}")
+      account_statement.push(format_row(action))
     end
     puts account_statement
+  end
+
+  def format_row(action)
+    "#{action.date} || #{twodecimal(action.credit)} || #{twodecimal(action.debit)} || #{twodecimal(action.balance)}"
   end
 
   def twodecimal(amount)
